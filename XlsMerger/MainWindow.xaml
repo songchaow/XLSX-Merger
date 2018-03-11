@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XlsMerger"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="电子表格合并工具" Height="430.8" Width="625.6">
     <Grid>
-        
+        <Label Content="选择要合并的电子表格文件：" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Height="26" Width="181"/>
+        <Button Content="浏览" HorizontalAlignment="Left" Margin="191,18,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="输出目录：" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="outputpath" HorizontalAlignment="Left" Height="26" Margin="85,285,0,0" TextWrapping="Wrap" Text="C:\" VerticalAlignment="Top" Width="412"/>
+        <Button Content="浏览" HorizontalAlignment="Left" Margin="515,288,0,0" VerticalAlignment="Top" Width="75" Click="Output_Button_Click"/>
+        <ListBox x:Name="inputfiles"  Height="208" Margin="10,72,307.6,0" VerticalAlignment="Top">
+        </ListBox>
+        <Label Content="已选文件：" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Button Content="合并" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="93" Click="Merge_Button_Click" Height="23"/>
+        <TextBox Name="publicrow_input" TextWrapping="Wrap" Text="1-5" Margin="322,128,203.2,247.8"/>
+        <Label Content="表格的公共区域所在的行数：&#xD;&#xA;可用&quot;-&quot;和&quot;,&quot;指明多行，如：&#xD;&#xA;1-2,3" HorizontalAlignment="Left" Margin="317,72,0,0" VerticalAlignment="Top" Height="56"/>
+        <Label Content="要合并的(即各学生所填写的)区域所在的行数：&#xD;&#xA;可用&quot;-&quot;和&quot;,&quot;指明多行，如：&#xA;1-2,3" HorizontalAlignment="Left" Margin="317,158,0,0" VerticalAlignment="Top" Height="56" Width="292"/>
+        <TextBox Name="mergerow_input" TextWrapping="Wrap" Text="7" Margin="322,214,203.2,163.8" />
+        <Label Content="工作表序号：" HorizontalAlignment="Left" Margin="317,254,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="sheetseq" HorizontalAlignment="Left" Height="23" Margin="398,257,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="99"/>
+        <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="619"/>
+        <Button Content="关于" HorizontalAlignment="Left" Margin="534,-1,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="输出文件名：" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="filename" x:FieldModifier="public" HorizontalAlignment="Left" Height="23" Margin="85,320,0,0" TextWrapping="Wrap" Text="合并的电子表格.xlsx" VerticalAlignment="Top" Width="120"/>
+        <CheckBox Name="ignoreEmptyBox" Content="不合并上述行中的空行" IsChecked="True" HorizontalAlignment="Left" Margin="322,242,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
