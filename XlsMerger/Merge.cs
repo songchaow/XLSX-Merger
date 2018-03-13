@@ -97,7 +97,7 @@ namespace XlsMerger
             if (newFile.Exists)
             {
                 newFile.Delete();  // ensures we create a new workbook
-                newFile = new FileInfo(outputPath + filename);
+                newFile = new FileInfo(outputPath + "\\" + filename);
             }
             using (var package = new ExcelPackage(newFile))
             {
