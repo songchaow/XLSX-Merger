@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows;
 using OfficeOpenXml;
 
@@ -51,6 +51,14 @@ namespace XlsMerger
             return false;
         }
 
+        private bool Convert(string filePath)
+        {
+            GemBox.Spreadsheet.SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
+            GemBox.Spreadsheet.ExcelFile ef = GemBox.Spreadsheet.ExcelFile.Load(filePath);
+            ef.Save(filePath + 'x');
+            return true;
+        }
+
         public void Merge_xlsx(List<string> inputFiles, string outputPath,string filename, List<int> fixed_rows, List<int> main_rows, int sheet_num = 1, bool ignoreEmpty = true)
         {
             List<ExcelRange> merge_data = new List<ExcelRange>();
@@ -60,7 +68,15 @@ namespace XlsMerger
             foreach (var filePath in inputFiles)
             {
                 ++counter;
-                FileInfo finfo = new FileInfo(filePath);
+                FileInfo finfo;
+                // first, convert xls to xlsx if neccessary
+                if (filePath.EndsWith(".xls"))
+                {
+                    Convert(filePath);
+                    finfo = new FileInfo(filePath+'x');
+                }
+
+                else finfo = new FileInfo(filePath);
                 var package = new ExcelPackage(finfo);
                 
                     ExcelWorksheet worksheet = package.Workbook.Worksheets[sheet_num];
